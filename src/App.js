@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { memo } from 'react'
+import '@/assets/css/index.less'
+import routes from '@/router'
+import { useRoutes } from 'react-router-dom'
 
-function App() {
+const App = memo(() => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className='header'>header</div>
+      <div className="page">
+        {/* 放置路由映射关系 */}
+        {useRoutes(routes)}
+      </div>
+      <div className='footer'>footer</div>
     </div>
-  );
-}
+  )
+})
 
-export default App;
+export default App
