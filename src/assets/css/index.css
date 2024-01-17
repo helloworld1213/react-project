@@ -17,7 +17,7 @@ dd {
 /* a元素重置 */
 a {
   text-decoration: none;
-  color: #333;
+  color: #484848;
 }
 /* img的vertical-align重置 */
 img {
@@ -33,4 +33,7 @@ li {
 i,
 em {
   font-style: normal;
+}
+body {
+  font-size: 14px;
 }
