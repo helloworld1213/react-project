@@ -17,6 +17,8 @@ module.exports = {
       "@": resolve("src"),
       components: resolve("src/components"),
       utils: resolve("src/utils"),
+      // 配置material-ui
+      // '@mui/styled-engine': '@mui/styled-engine-sc'
     },
   },
 };

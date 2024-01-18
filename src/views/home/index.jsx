@@ -4,7 +4,8 @@ import HomeBanner from "./c-cpns/home-banner";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import SectionHeader from "@/components/section-header";
-import RoomItem from "@/components/room-item";
+// import RoomItem from "@/components/room-item";
+import SectionRooms from "@/components/section-rooms";
 
 const Home = memo(() => {
   //解构出来,不然下面写的太繁琐了
@@ -29,13 +30,15 @@ const Home = memo(() => {
       <div className="content">
         <div className="section-header">
           <SectionHeader title={goodPriceInfo?.title} />
-          <ul>
-            {/* 页面只展示8条数据,请求到的是10条,所以要截取 */}
+          {/* <ul className="room-list">
+            页面只展示8条数据,请求到的是10条,所以要截取
             {goodPriceInfo.list?.slice(0, 8).map((item) => {
-              // return <li key={item.id}>{item.name}</li>
+              return <li key={item.id}>{item.name}</li>
               return <RoomItem itemData={item} key={item.id}/>;
             })}
-          </ul>
+          </ul> */}
+          {/* 将room-list封装成一个组件 */}
+          <SectionRooms roomList={goodPriceInfo?.list}/>
         </div>
       </div>
     </HomeWrapper>
