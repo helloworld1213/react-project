@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const ItemWrapper = styled.div`
   box-sizing: border-box;
-  width: 25%;
+  /* 这里房间item就不能写死为25%,而是动态传入 */
+  width: ${(props) => props.itemWidth};
   padding: 0 8px;
 
   .inner {
@@ -52,7 +53,7 @@ export const ItemWrapper = styled.div`
       align-items: center;
       font-size: 12px;
       font-weight: 600;
-      color: ${props => props.theme.text.primaryColor};
+      color: ${(props) => props.theme.text.primaryColor};
 
       .count {
         margin: 0 2px 0 4px;

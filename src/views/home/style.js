@@ -6,7 +6,11 @@ export const HomeWrapper = styled.div`
     margin: 0 auto;
   }
 
-  .section-header {
+  .good-price {
+    margin-top: 30px;
+  }
+
+  .high-score {
     margin-top: 30px;
   }
 `;
