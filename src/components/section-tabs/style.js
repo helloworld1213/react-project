@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
 
 export const TabsWrapper = styled.div`
-  display: flex;
+  /* display: flex; */
+  position: relative;
 
   .item {
     box-sizing: border-box;
+    flex-basis: 120px;
+    flex-shrink: 0;
     padding: 14px 16px;
     margin-right: 16px;
     margin-bottom: 5px;

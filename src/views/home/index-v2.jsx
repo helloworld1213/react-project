@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { HomeWrapper } from "./style";
 import HomeBanner from "./c-cpns/home-banner";
 import { fetchHomeDataAction } from "@/store/modules/home";
@@ -7,11 +7,12 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 // import RoomItem from "@/components/room-item";
 // import SectionRooms from "@/components/section-rooms";
 import HomeSectionV1 from "./c-cpns/home-section-v1";
-// import SectionHeader from "@/components/section-header";
-// import SectionRooms from "@/components/section-rooms";
-// import SectionTabs from "@/components/section-tabs";
-import HomeSectionV2 from "./c-cpns/home-section-v2";
+import SectionHeader from "@/components/section-header";
+import SectionRooms from "@/components/section-rooms";
+import SectionTabs from "@/components/section-tabs";
 
+
+// home-section-v2的封装
 const Home = memo(() => {
   //解构出来,不然下面写的太繁琐了
   const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
@@ -24,14 +25,14 @@ const Home = memo(() => {
   );
 
   // 定义一个name
-  // const [name, setName] = useState("佛山");
-  // const tabClickHandle = useCallback((index, name) => {
-  //   // console.log(name);
-  //   setName(name);
-  // }, []);
-  // // 对tabs的数据处理
-  // const tabNames = discountInfo?.dest_address?.map((item) => item.name);
-  // // console.log(tabsNames);
+  const [name, setName] = useState("佛山");
+  const tabClickHandle = useCallback((index, name) => {
+    // console.log(name);
+    setName(name)
+  }, []);
+  // 对tabs的数据处理
+  const tabNames = discountInfo?.dest_address?.map((item) => item.name);
+  // console.log(tabsNames);
 
   //这里等同于类组件生命周期里面调用action用法
   //useDispatch非常简单，就是直接获取dispatch函数，之后在组件中直接使用即可
@@ -45,23 +46,25 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        {/* 在有值的情况下才渲染,保证HomeSectionV2初始化值是第一次渲染 */}
-        {/* 因为useState(初始值)只有在组件第一次被渲染时有效 */}
-        {Object.keys(discountInfo).length && (
-          <HomeSectionV2 infoData={discountInfo} />
-        )}
-
-        {Object.keys(goodPriceInfo).length && (
-          <HomeSectionV1 infoData={goodPriceInfo} />
-        )}
-        {Object.keys(highScoreInfo).length && (
-          <HomeSectionV1 infoData={highScoreInfo} />
-        )}
-
-        {/* <HomeSectionV2 infoData={discountInfo} />
+        {/* 折扣数据(未封装前) */}
+        <div className="discount">
+          {/* 标题 */}
+          <SectionHeader
+            title={discountInfo?.title}
+            subTitle={discountInfo.subtitle}
+          />
+          {/* tabs */}
+          <SectionTabs tabNames={tabNames} tabClick={tabClickHandle} />
+          {/* room-item */}
+          <SectionRooms
+            // roomList={discountInfo.dest_list?.["成都"]}
+            roomList={discountInfo.dest_list?.[name]}
+            itemWidth="33.33%"
+          />
+        </div>
 
         <HomeSectionV1 infoData={goodPriceInfo} />
-        <HomeSectionV1 infoData={highScoreInfo} /> */}
+        <HomeSectionV1 infoData={highScoreInfo} />
       </div>
     </HomeWrapper>
   );

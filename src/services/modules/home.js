@@ -12,8 +12,14 @@ export function getHomeHighScoreData() {
   })
 }
 
-export function getDiscountData() {
+export function getHomeDiscountData() {
   return instanceRequest.get({
     url: '/home/discount'
+  })
+}
+
+export function getHomeHotRecommendData() {
+  return instanceRequest.get({
+    url: '/home/hotrecommenddest'
   })
 }
