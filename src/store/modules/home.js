@@ -3,6 +3,8 @@ import {
   getHomeGoodsPriceData,
   getHomeHighScoreData,
   getHomeHotRecommendData,
+  getHomeLongForData,
+  getHomePlusData,
 } from "@/services";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
@@ -35,8 +37,16 @@ export const fetchHomeDataAction = createAsyncThunk(
       dispatch(changeDiscountInfoAction(res));
     });
     //请求热门推荐数据
-    getHomeHotRecommendData().then(res => {
-      dispatch(changeHotRecommendInfoAction(res))
+    getHomeHotRecommendData().then((res) => {
+      dispatch(changeHotRecommendInfoAction(res));
+    });
+    //请求向往的数据
+    getHomeLongForData().then((res) => {
+      dispatch(changeLongForInfoAction(res));
+    });
+    //获取plus数据
+    getHomePlusData().then((res) => {
+      dispatch(changePlusInfoAction(res))
     })
   }
 );
@@ -47,7 +57,9 @@ const homeSlice = createSlice({
     goodPriceInfo: {},
     highScoreInfo: {},
     discountInfo: {},
-    hotrecommenddestInfo: {}
+    hotrecommenddestInfo: {},
+    longforInfo: {},
+    plusInfo: {},
   },
   reducers: {
     //修改state中的数据,则必须在这里创建一个action
@@ -61,9 +73,15 @@ const homeSlice = createSlice({
     changeDiscountInfoAction(state, { payload }) {
       state.discountInfo = payload;
     },
-    changeHotRecommendInfoAction(state, {payload}) {
-      state.hotrecommenddestInfo = payload
-    }
+    changeHotRecommendInfoAction(state, { payload }) {
+      state.hotrecommenddestInfo = payload;
+    },
+    changeLongForInfoAction(state, { payload }) {
+      state.longforInfo = payload;
+    },
+    changePlusInfoAction(state, { payload }) {
+      state.plusInfo = payload;
+    },
   },
   extraReducers: (build) => {
     // build.addCase(fetchHomeDataAction.fulfilled, (state, { payload }) => {
@@ -78,7 +96,9 @@ export const {
   changeGoodPriceInfoAction,
   changeHighScoreInfoAction,
   changeDiscountInfoAction,
-  changeHotRecommendInfoAction
+  changeHotRecommendInfoAction,
+  changeLongForInfoAction,
+  changePlusInfoAction,
 } = homeSlice.actions;
 
 export default homeSlice.reducer;

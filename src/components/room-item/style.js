@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ItemWrapper = styled.div`
+  flex-shrink: 0;
   box-sizing: border-box;
   /* 这里房间item就不能写死为25%,而是动态传入 */
   width: ${(props) => props.itemWidth};

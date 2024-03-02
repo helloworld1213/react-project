@@ -11,14 +11,26 @@ import HomeSectionV1 from "./c-cpns/home-section-v1";
 // import SectionRooms from "@/components/section-rooms";
 // import SectionTabs from "@/components/section-tabs";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
+import HomeLongFor from "./c-cpns/home-longfor";
+import HomeSectionV3 from "./c-cpns/home-section-v3";
 
 const Home = memo(() => {
   //解构出来,不然下面写的太繁琐了
-  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    hotrecommenddestInfo,
+    longforInfo,
+    plusInfo,
+  } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
       highScoreInfo: state.home.highScoreInfo,
       discountInfo: state.home.discountInfo,
+      hotrecommenddestInfo: state.home.hotrecommenddestInfo,
+      longforInfo: state.home.longforInfo,
+      plusInfo: state.home.plusInfo,
     }),
     shallowEqual
   );
@@ -50,6 +62,13 @@ const Home = memo(() => {
         {Object.keys(discountInfo).length && (
           <HomeSectionV2 infoData={discountInfo} />
         )}
+        {Object.keys(hotrecommenddestInfo).length && (
+          <HomeSectionV2 infoData={hotrecommenddestInfo} />
+        )}
+
+        {Object.keys(longforInfo).length && (
+          <HomeLongFor infoData={longforInfo} />
+        )}
 
         {Object.keys(goodPriceInfo).length && (
           <HomeSectionV1 infoData={goodPriceInfo} />
@@ -62,6 +81,8 @@ const Home = memo(() => {
 
         <HomeSectionV1 infoData={goodPriceInfo} />
         <HomeSectionV1 infoData={highScoreInfo} /> */}
+
+        {Object.keys(plusInfo).length && <HomeSectionV3 infoData={plusInfo} />}
       </div>
     </HomeWrapper>
   );

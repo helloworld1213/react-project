@@ -3,7 +3,7 @@ import { ViewsWrapper } from "./style";
 import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
 
-const SectionViews = memo((props) => {
+const ScrollViews = memo((props) => {
   const [showRightBtn, setShowRightBtn] = useState(false);
   const [showLeftBtn, setShowLeftBtn] = useState(false);
   const [positionIndex, setPositionIndex] = useState(0);
@@ -101,4 +101,4 @@ const SectionViews = memo((props) => {
   );
 });
 
-export default SectionViews;
+export default ScrollViews;
