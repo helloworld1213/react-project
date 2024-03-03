@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import App from "@/App";
 import "normalize.css";
 import "./assets/css/index.less";
+import "antd/dist/antd.less";
+
 import store from "@/store";
 import { ThemeProvider } from "styled-components";
 import theme from "@/assets/theme";

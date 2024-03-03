@@ -1,10 +1,18 @@
 import PropTypes from "prop-types";
-import React, { memo } from "react";
+import React, { memo, useRef } from "react";
 import { ItemWrapper } from "./style";
 import { Rating } from "@mui/material";
+import { Carousel } from "antd";
+import IconArrowLeft from "@/assets/svg/icon-arrow-left";
+import IconArrowRight from "@/assets/svg/icon-arrow-right";
 
 const RoomItem = memo((props) => {
   const { itemData, itemWidth = "25%" } = props;
+  const swiperRef = useRef();
+  //点击箭头图片改变
+  function changeClick(isRight = true) {
+    return isRight ? swiperRef.current.next() : swiperRef.current.prev();
+  }
 
   return (
     <ItemWrapper
@@ -12,8 +20,28 @@ const RoomItem = memo((props) => {
       itemWidth={itemWidth}
     >
       <div className="inner">
-        <div className="cover">
+        {/* <div className="cover">
           <img src={itemData.picture_url} alt="" />
+        </div> */}
+        {/* 从单张图片变成了轮播图 */}
+        <div className="swiper">
+          <div className="control">
+            <div className="btn left" onClick={(e) => changeClick(false)}>
+              <IconArrowLeft width="30" height="30" />
+            </div>
+            <div className="btn right" onClick={(e) => changeClick(true)}>
+              <IconArrowRight width="30" height="30" />
+            </div>
+          </div>
+          <Carousel dots={false} ref={swiperRef}>
+            {itemData?.picture_urls?.map((item) => {
+              return (
+                <div className="cover" key={item}>
+                  <img src={item} alt="" />
+                </div>
+              );
+            })}
+          </Carousel>
         </div>
         <div className="desc">{itemData.verify_info.messages.join("·")}</div>
         <div className="name">{itemData.name}</div>

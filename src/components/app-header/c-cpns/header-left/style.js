@@ -3,11 +3,16 @@ import styled from "styled-components";
 export const LeftWrapper = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
   cursor: pointer;
 
   /* color: #ff385c; */
   color: ${(props) => props.theme.color.primaryColor};
+
+  .logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .logo {
     margin-left: 24px;

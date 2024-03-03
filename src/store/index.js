@@ -1,13 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
-import homeSlice from './modules/home'
-// import entrieSlice from './modules/entrie'
-import entrieSlice from './modules/entrie/index'
+import { configureStore } from "@reduxjs/toolkit";
+import homeSlice from "./modules/home";
+// import entireSlice from './modules/entire/index'
+import entireSlice from "./modules/entire";
 
 const store = configureStore({
   reducer: {
     home: homeSlice,
-    entrie: entrieSlice
-  }
-})
+    entire: entireSlice,
+  },
+});
 
-export default store
+export default store;

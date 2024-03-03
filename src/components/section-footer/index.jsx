@@ -16,7 +16,7 @@ const SectionFooter = memo((props) => {
   //路径跳转
   const navigate = useNavigate();
   function goToPathClick() {
-    navigate("/entrie");
+    navigate("/entire");
   }
 
   return (
