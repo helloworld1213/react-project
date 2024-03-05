@@ -1,8 +1,10 @@
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import { RoomsWrapper } from "./style";
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import RoomItem from "@/components/room-item";
+import { useNavigate } from "react-router-dom";
+import { changeDetialInfoAction } from "@/store/modules/detail";
 
 const EntrieRooms = memo(() => {
   const { roomListInfo, totalCountInfo, isLoadingInfo } = useSelector(
@@ -14,12 +16,32 @@ const EntrieRooms = memo(() => {
     shallowEqual
   );
 
+  //点击图片跳转到详情页
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const itemHandleClick = useCallback(
+    (itemInfo) => {
+      // console.log("roomwrapper click", info);
+      //调用action将点击的信息存储到redux
+      dispatch(changeDetialInfoAction(itemInfo));
+      navigate("/detail");
+    },
+    [navigate, dispatch]
+  );
+
   return (
     <RoomsWrapper>
       <h2 className="title">{totalCountInfo}多处房源</h2>
       <div className="list">
         {roomListInfo?.map((item) => {
-          return <RoomItem itemData={item} itemWidth="20%" key={item.id} />;
+          return (
+            <RoomItem
+              itemData={item}
+              itemWidth="20%"
+              key={item._id}
+              itemClick={(itemInfo) => itemHandleClick(itemInfo)}
+            />
+          );
         })}
       </div>
       {/* 添加蒙版, 防止清晰看出数据加载慢 */}

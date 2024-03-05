@@ -22,7 +22,8 @@ const EntriePagination = memo(() => {
   const dispatch = useDispatch();
   //页码是从1开始的
   function PaginationChangeClick(event, pageCount) {
-    // console.log(pageCount);
+    // console.log(pageCount);//展示的是点击的那个page页码
+    //将点击的页面传递给action里面的page
     //改变页码前先回到顶部
     window.scrollTo(0, 0);
     dispatch(fetchEntireDataAction(pageCount - 1));

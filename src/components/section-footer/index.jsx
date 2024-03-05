@@ -16,6 +16,8 @@ const SectionFooter = memo((props) => {
   //路径跳转
   const navigate = useNavigate();
   function goToPathClick() {
+    //跳转到别的页面的顶部
+    window.scrollTo(0, 0);
     navigate("/entire");
   }
 

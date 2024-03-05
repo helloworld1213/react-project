@@ -5,7 +5,7 @@ export const ItemWrapper = styled.div`
   box-sizing: border-box;
   /* 这里房间item就不能写死为25%,而是动态传入 */
   width: ${(props) => props.itemWidth};
-  padding: 0 8px;
+  padding: 8px;
 
   .inner {
     width: 100%;
@@ -49,6 +49,35 @@ export const ItemWrapper = styled.div`
               transparent 0%,
               rgba(0, 0, 0, 0.25) 100%
             );
+          }
+        }
+      }
+
+      .indicator {
+        position: absolute;
+        z-index: 9;
+        width: 30%;
+        left: 0;
+        right: 0;
+        bottom: 10px;
+        margin: 0 auto;
+
+        .item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 20%;
+
+          .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 50%;
+
+            &.active {
+              width: 8px;
+              height: 8px;
+            }
           }
         }
       }

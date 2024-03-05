@@ -28,9 +28,10 @@ import { createSlice } from "@reduxjs/toolkit";
 //   }
 // );
 
+//这里用的是redux-thunk(已经被redux集成了, 可以直接用)
 export const fetchEntireDataAction = (page = 0) => {
   return async (dispatch) => {
-    //修改当前page
+    //修改当前page(将获取到的页面调用action赋值到redux中)
     dispatch(changeCurrentPageAction(page));
 
     //请求数据的时候显示蒙版,请求完成取消蒙版
