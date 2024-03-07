@@ -13,6 +13,7 @@ import HomeSectionV1 from "./c-cpns/home-section-v1";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
 import HomeLongFor from "./c-cpns/home-longfor";
 import HomeSectionV3 from "./c-cpns/home-section-v3";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 
 const Home = memo(() => {
   //解构出来,不然下面写的太繁琐了
@@ -51,6 +52,8 @@ const Home = memo(() => {
 
   useEffect(() => {
     dispatch(fetchHomeDataAction());
+    // 决定header是否固定
+    dispatch(changeHeaderConfigAction({ isFixed: true }));
   }, [dispatch]);
 
   return (

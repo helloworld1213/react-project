@@ -6,6 +6,7 @@ import EntriePagination from "./c-cpns/entire-pagination";
 import { useDispatch } from "react-redux";
 
 import { fetchEntireDataAction } from "@/store/modules/entire";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 
 const Entrie = memo(() => {
   //调用action获取数据,然后保存到redux中
@@ -13,6 +14,7 @@ const Entrie = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchEntireDataAction());
+    dispatch(changeHeaderConfigAction({ isFixed: true }));
   }, [dispatch]);
 
   return (
