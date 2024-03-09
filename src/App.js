@@ -9,6 +9,7 @@ import Header from "./components/app-header";
 const App = memo(() => {
   return (
     <div className="app">
+      {/* <h2>哈哈哈哈</h2> */}
       <Header />
       <div className="page">
         {/* 放置路由映射关系 */}
