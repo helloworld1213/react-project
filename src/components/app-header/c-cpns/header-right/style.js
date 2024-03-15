@@ -48,9 +48,9 @@ export const RightWrapper = styled.div`
       border-radius: 10px;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
       color: #666;
-      div:nth-child(1) .item:nth-child(1) {
+      /* div:nth-child(1) .item:nth-child(1) {
         font-weight: 700;
-      }
+      } */
 
       .top,
       .bottom {
@@ -60,6 +60,11 @@ export const RightWrapper = styled.div`
           height: 40px;
           line-height: 40px;
           padding: 0 16px;
+
+          &:hover {
+            text-decoration: underline;
+            font-weight: 700;
+          }
         }
       }
 

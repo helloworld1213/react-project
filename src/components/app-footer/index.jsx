@@ -14,7 +14,11 @@ const Footer = memo(() => {
                 <div className="list">
                   {item.list.map((subItem) => {
                     return (
-                      <div className="subItem" key={subItem}>
+                      <div
+                        className="subItem"
+                        key={subItem}
+                        title="别点了,没有数据不会跳转"
+                      >
                         {subItem}
                       </div>
                     );
