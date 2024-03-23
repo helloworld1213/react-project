@@ -89,6 +89,7 @@ export const ItemWrapper = styled.div`
       padding: 66.66% 8px 0;
       border-radius: 3px;
       overflow: hidden;
+      cursor: pointer;
 
       img {
         position: absolute;

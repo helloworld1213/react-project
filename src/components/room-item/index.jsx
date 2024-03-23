@@ -7,6 +7,7 @@ import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
 import Indicator from "@/base-ui/indicator";
 import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
 
 const RoomItem = memo((props) => {
   const { itemData, itemWidth = "25%", itemClick } = props;
@@ -36,10 +37,21 @@ const RoomItem = memo((props) => {
     if (itemClick) itemClick(itemData);
   }
 
+  //首页图片点击跳转到entire
+  const navigate = useNavigate();
+  function navigateToHome() {
+    window.scrollTo(0, 0);
+    navigate("/entire");
+  }
+
   //不同情况下展示的图片不同(单张图片/轮播图)
   const pictureEl = (
     <div className="cover">
-      <img src={itemData.picture_url} alt="" />
+      <img
+        src={itemData.picture_url}
+        alt=""
+        onClick={(e) => navigateToHome()}
+      />
     </div>
   );
   const swiperEl = (

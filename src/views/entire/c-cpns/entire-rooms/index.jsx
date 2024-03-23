@@ -21,7 +21,7 @@ const EntrieRooms = memo(() => {
   const dispatch = useDispatch();
   const itemHandleClick = useCallback(
     (itemInfo) => {
-      // console.log("roomwrapper click", info);
+      // console.log("roomwrapper click", itemInfo);
       //调用action将点击的信息存储到redux
       dispatch(changeDetialInfoAction(itemInfo));
       navigate("/detail");

@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 const HeaderRight = memo(() => {
   // 定义组件内部的状态
   const [showPanel, setShowPanel] = useState(false);
+
   //副作用
   useEffect(() => {
     function windowHandleClick() {
@@ -28,10 +29,14 @@ const HeaderRight = memo(() => {
     setShowPanel(true);
   }
 
+  function btnClick() {
+    console.log("====");
+  }
+
   return (
     <RightWrapper>
       <div className="icon">
-        <span className="btn">
+        <span className="btn" title="语言">
           <IconGlobal />
         </span>
       </div>
@@ -42,7 +47,7 @@ const HeaderRight = memo(() => {
 
         {showPanel && (
           <div className="panel">
-            <div className="top">
+            <div className="top" onClick={(e) => btnClick()}>
               <div className="register item">注册</div>
               <div className="login item">登录</div>
             </div>

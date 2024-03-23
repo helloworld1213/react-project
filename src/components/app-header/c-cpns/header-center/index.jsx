@@ -8,6 +8,7 @@ import { CSSTransition } from "react-transition-group";
 
 const HeaderCenter = memo((props) => {
   const [tabIndex, setTabIndex] = useState(0);
+
   //模拟数据: 从data里面获取数据并过滤出title
   const titles = searchTitles.map((item) => item.title);
 
@@ -42,7 +43,10 @@ const HeaderCenter = memo((props) => {
         <div className="search-detail">
           <SearchTabs titles={titles} tabClick={setTabIndex} />
           <div className="infos">
-            <SearchSections searchInfos={searchTitles[tabIndex].searchInfos} />
+            <SearchSections
+              searchInfos={searchTitles[tabIndex].searchInfos}
+              tabIndex={tabIndex}
+            />
           </div>
         </div>
       </CSSTransition>

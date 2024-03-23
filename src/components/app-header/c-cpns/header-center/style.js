@@ -48,6 +48,7 @@ export const CenterWrapper = styled.div`
       top: 60px;
       left: 50%;
       transform: translateX(-50%);
+      /* box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1); */
     }
   }
 

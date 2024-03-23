@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SectionsWrapper = styled.div`
   display: flex;
+  position: relative;
   width: 850px;
   height: 66px;
   border-radius: 32px;
@@ -13,6 +14,7 @@ export const SectionsWrapper = styled.div`
     display: flex;
     align-items: center;
     border-radius: 32px;
+    cursor: pointer;
 
     .info {
       flex: 1;
@@ -43,4 +45,14 @@ export const SectionsWrapper = styled.div`
       background-color: #eee;
     }
   }
-`
+
+  .tab-panel {
+    position: absolute;
+    z-index: 14;
+    top: 90px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+  }
+`;
